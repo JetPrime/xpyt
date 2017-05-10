@@ -18,6 +18,9 @@
     padding-top: 5px;
     padding-bottom: 5px;
     text-align: center;
+    background-color: #002C25;
+    color: white;
+    border-radius: 15px;
 }
 
 #channel #content {
