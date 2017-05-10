@@ -15,6 +15,7 @@ export class Args {
     };
 
     ytParams = {
+        q: "q",
         channelId: "channelId",
         playlistId: "playlistId",
         categoryId: "categoryId",
@@ -27,6 +28,7 @@ export class Args {
     };
 
     ytItem = {
+        search: "search",
         channels: "channels",
         playlists: "playlists",
         playlistItems: "playlistItems",

@@ -1,4 +1,4 @@
-import { Component, Input, ViewChild, ElementRef } from '@angular/core';
+import { Component, Input, ViewChild, ElementRef, Output, EventEmitter } from '@angular/core';
 
 import { YoutubeResponse } from '../../models/youtube-response';
 import { YoutubeService } from '../../services/youtube.service';
@@ -7,40 +7,29 @@ import { YoutubeService } from '../../services/youtube.service';
 @Component({
   selector: 'cmp-playlists',
   templateUrl:'./playlists.component.html',
-  styleUrls: [ '../../styles/app.component.css' ]
+  styleUrls: [ '../../styles/app.component.css', './playlists.component.css' ] 
 })
 
 export class PlaylistsComponent {
   
   @Input()
   playlists : YoutubeResponse;
-  @Input()
-  playlist : YoutubeResponse;
+  @Output()
+  onPlaylistEmit= new EventEmitter<YoutubeResponse>();
 
-  video: YoutubeResponse;
+  playlistState = "active";
+  playlist : YoutubeResponse;
 
   constructor( private ytService: YoutubeService){}
 
   onPlaylistSelect(pId: string): void {
+    this.playlistState = (this.playlistState == "active") ? "inactive" : "active";
     this.getPlaylist(pId);
   }
   
   getPlaylist(pId: string): void {
     this.ytService.getPlaylist(pId).then(
-      playlist => this.playlist = playlist
+      playlist => this.onPlaylistEmit.emit(playlist)
     );
   };
-
-  onVideoSelect(pId: string): void {
-    this.getVideo(pId);
-  };
-
-  getVideo(pId: string): void {
-    this.ytService.getVideo(pId).then(
-      video => {
-        this.video = video;
-      }
-    );
-  };
-
 }

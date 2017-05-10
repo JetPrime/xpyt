@@ -9,6 +9,7 @@ import { YoutubeRequest } from './models/youtube-request';
 import { AppComponent }  from './components/app/app.component';
 import { ChannelComponent } from './components/channel/channel.component';
 import { PlaylistsComponent } from './components/playlists/playlists.component';
+import { PlaylistComponent } from './components/playlist/playlist.component';
 import { VideoComponent } from './components/video/video.component';
 import { SearchComponent } from './components/search/search.component';
 
@@ -16,7 +17,7 @@ import { Args } from "./models/args";
 
 @NgModule({
   imports:      [ BrowserModule, HttpModule, FormsModule ],
-  declarations: [ AppComponent, ChannelComponent, PlaylistsComponent, VideoComponent,
+  declarations: [ AppComponent, ChannelComponent, PlaylistsComponent, PlaylistComponent, VideoComponent,
   SearchComponent],
   bootstrap:    [ AppComponent ],
   providers:    [ YoutubeRequest, Args, YoutubeService ]

@@ -6,7 +6,7 @@ import { YoutubeResponse } from '../../models/youtube-response';
 @Component({
   selector: 'cmp-video',
   templateUrl:'./video.component.html',
-  styleUrls: [ '../../styles/app.component.css' ]
+  styleUrls: [ '../../styles/app.component.css', './video.component.css' ]
 })
 
 export class VideoComponent {
@@ -25,6 +25,5 @@ export class VideoComponent {
 
   loadData(pHtml: string) {
       this.videoPlayer.nativeElement.innerHTML = pHtml;
-  }
-
+  };
 }

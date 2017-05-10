@@ -16,6 +16,23 @@ export class YoutubeService {
         private args: Args
     ) { }
 
+    search(pChannel: string): Promise<YoutubeResponse> {
+
+        let request = new YoutubeRequest();
+        request.item = this.args.ytItem.search;
+        request.part = [];
+        request.part.push(this.args.ytPart.snippet);
+        request.part.push(this.args.ytPart.id);
+        request.args = [
+            new YoutubeArgs(this.args.ytParams.q, pChannel)
+        ];
+
+        return this.http.get(request.getUrl(request))
+                .toPromise()
+                .then(response => response.json().items as YoutubeResponse)
+                .catch(this.handleError);
+    };
+
     getChannel(pChannel: string): Promise<YoutubeResponse> {
 
         let request = new YoutubeRequest();

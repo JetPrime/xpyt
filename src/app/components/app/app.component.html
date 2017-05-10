@@ -1,6 +1,5 @@
-<div id="app">
-    <div id="content">
-        <cmp-search (onRequest)="onRequest($event)" ></cmp-search>
-        <cmp-channel [channelRequest]="channelRequest"></cmp-channel>
-    </div>
-</div>
+<cmp-search (onRequest)="onRequest($event)" ></cmp-search>
+<cmp-channel [channelRequest]="channelRequest" (onPlaylistsEmit)="onPlaylistsEmit($event)"></cmp-channel>
+<cmp-playlists [playlists]="playlists" (onPlaylistEmit)="onPlaylistEmit($event)" ></cmp-playlists>
+<cmp-playlist [playlist]=playlist (onVideoEmit)="onVideoEmit($event)" ></cmp-playlist>
+<cmp-video [video]=video style="height:100%"></cmp-video>
